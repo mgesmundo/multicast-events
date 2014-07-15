@@ -1,0 +1,42 @@
+{
+  "name": "multicast-events",
+  "description": "Emit an event on a machine and listen it on a different machine (or process).",
+  "preferGlobal": "false",
+  "version": "1.0.0",
+  "author": {
+    "name": "Marcello Gesmundo",
+    "email": "mgesmundo@yoovant.com",
+    "url": "http://www.yoovant.com"
+  },
+  "keywords": [
+    "events",
+    "emitter",
+    "multicast",
+    "network"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mgesmundo/multicast-events.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mgesmundo/multicast-events/issues"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/test.js --require should --reporter spec"
+  },
+  "dependencies": {
+    "msgpack": "~0.2.3"
+  },
+  "devDependencies": {
+    "mocha": "~1.20.0",
+    "should": "~4.0.4",
+    "debug": "~1.0.3"
+  },
+  "analyze": false,
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "readmeFilename": "README.md"
+}
