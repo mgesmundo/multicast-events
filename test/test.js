@@ -79,5 +79,13 @@ describe('Multicast Events on same process', function() {
     emitter4.on('test', handler);
     emitter4.emit('test', 'message');
   });
-
+  it('should don\'t set a wrong interface', function(done) {
+    (function (){
+      new EventEmitter({
+        name: 'wrong',
+        interface: '190.190.190.190'
+      });
+    }).should.throw('wrong does not have 190.190.190.190 as a valid multicast interface');
+    done();
+  });
 });
