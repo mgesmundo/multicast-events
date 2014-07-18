@@ -50,9 +50,9 @@ describe('Multicast Events on same process', function() {
     var child = require('child_process').fork(path.resolve(__dirname, './other-emitter'));
     child.pid.should.should.not.eql(process.pid);
   });
-  it('should handle ONLY events from another process (NOT handle events from the SAME process', function(done) {
+  it('should handle ONLY events from another process (NOT handle events from the SAME process)', function(done) {
     var emitter3 = new EventEmitter({
-      loopback: false
+      foreignOnly: true
     });
     function handler(data) {
       data.should.eql('message');
@@ -61,7 +61,7 @@ describe('Multicast Events on same process', function() {
       done();
     }
     emitter3.on('process', handler);
-    emitter3.emit('process2', 'not handled locally');
+    emitter3.emit('process', 'not handled locally');
     setTimeout(function () {
       child = require('child_process').fork(path.resolve(__dirname, './other-emitter'));
       child.pid.should.should.not.eql(process.pid);

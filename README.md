@@ -26,6 +26,7 @@ where `opts` is an `Object` with this properties:
 * __ttl__ (`Number`): the number of IP hops that a packet is allowed to go through. The default value is `64`.
 * __interface__ (`String`): if not specified, every listener will add membership to all valid interfaces. The interface must be a valid multicast address (from 224.0.0.1 to 239.255.255.254).
 * __loopback__ (`Boolean`): when this option is set, multicast packets will also be received on the local interface. The default value is `true`.
+* __foreignOnly__ (`Boolean`) This option only makes sense when loopback is true. In this case, if foreignOnly is true, the events are handled ONLY by a process other than the one that issued the event. The default value is `false`.
 * __octet__ (`Number`): the first octet used for the generated multicast address. The default value is `239`.
 * __port__ (`Number`): the port used as base to generate a unique port used for every event. The default value is `1967`.
 * __group__ (`String`): all events can be grouped into the same multicast domain generated using this option. It can be a string or a valid multicast address. The default value is `'events'`.
@@ -158,6 +159,36 @@ On the first terminal window now you see a new line:
 As you can see, the event `emitter.emit(...)` on the `app1.js` is not handled because the emitter has the option `loopback = false`, whereas the event `emitter.emit(...)`  on the `app2.js` is handled both in `app2.js` and `app1.js` (because when not specified the `loopback` parameter is `true`).
 
 See the content of the `example` folder.
+
+To avoid a node process to handle their own events listening only the events from another node process, you can set the `EventEmitter` as in the previous example or setting `foreignOnly` option on both `EventEmitter`:
+
+```javascript
+// first application
+var EventEmitter = require('multicast-events').EventEmitter;
+
+var emitter = new EventEmitter({
+  name: 'emitter on app1',
+  foreignOnly: true
+});
+emitter.on('event-name', function (data) { console.log('listener on app1: ', data); });
+
+// this event is handled only on the second application
+emitter.emit('event-name', '--> emit from emitter on app1');
+
+// second application
+var EventEmitter = require('multicast-events').EventEmitter;
+
+var emitter = new EventEmitter({
+  name: 'emitter on app2',
+  foreignOnly: true
+});
+emitter.on('event-name', function (data) { console.log('listener on app2: ', data); });
+
+// this event is handled only on the first application
+emitter.emit('event-name', '--> emit from emitter on app2');
+
+```
+
 
 ## Documentation
 
