@@ -43,7 +43,7 @@ describe('Multicast Events on same process', function() {
     function handler(data) {
       data.should.eql('message');
       emitter1.off('process', handler);
-      child.disconnect();
+      child.kill();
       done();
     }
     emitter1.on('process', handler);
@@ -57,7 +57,7 @@ describe('Multicast Events on same process', function() {
     function handler(data) {
       data.should.eql('message');
       emitter3.off('process', handler);
-      child.disconnect();
+      child.kill();
       done();
     }
     emitter3.on('process', handler);
