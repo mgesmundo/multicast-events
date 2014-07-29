@@ -1,6 +1,6 @@
 # Multicast Events
 
-If you need to emit an event from a machine listening it on another machine (or a different process), you can simply use this module to do it. It uses a multicast [msgpack][1] message: when a node application add a listener for an event, it joins into a multicast group. Using this technique the message is handled only by the listener into the same multicast group (and listening on the same UDP port) and is not necessary to drop unwanted messages inside the application. All events are (optionally) encrypted.
+If you need to emit an event from a machine listening it on another machine (or a different process), you can simply use this module to do it. It uses a multicast [AMP][1] message: when a node application add a listener for an event, it joins into a multicast group. Using this technique the message is handled only by the listener into the same multicast group (and listening on the same UDP port) and is not necessary to drop unwanted messages inside the application. All events are (optionally) encrypted.
 
 ## Installation
 
@@ -204,5 +204,5 @@ As usual I use [mocha][2] as test framework:
     $ npm test
 
 
-[1]: https://www.npmjs.org/package/msgpack
+[1]: https://www.npmjs.org/package/amp
 [2]: http://visionmedia.github.io/mocha
