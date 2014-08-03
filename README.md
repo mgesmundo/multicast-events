@@ -21,8 +21,9 @@ where `opts` is an `Object` with this properties:
 
 * __name__ (`String`): the name assigned to the instance for debug purpose. The default value is `'emitter #n'` where _n_ is a counter.
 * __id__ (`String`): the identifier of the application. The default value is `'default'`.
-* __secret__ (`String`): the shared secret password used to encrypt/decrypt all messages.
+* __secure__ (`Boolean`): Set `true` to enable the messages encryption. The default value is `false`.
 * __cipher__ (`String`): the cipher used to encrypt/decrypt the messages. The default value is `'aes256'`.
+* __secret__ (`String`): the shared secret password used to encrypt/decrypt all messages. The default value is `'secret'`.
 * __ttl__ (`Number`): the number of IP hops that a packet is allowed to go through. The default value is `64`.
 * __interface__ (`String`): if not specified, every listener will add membership to all valid interfaces. The interface must be a valid multicast address (from 224.0.0.1 to 239.255.255.254).
 * __loopback__ (`Boolean`): when this option is set, multicast packets will also be received on the local interface. The default value is `true`.

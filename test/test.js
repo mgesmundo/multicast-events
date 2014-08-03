@@ -69,6 +69,7 @@ describe('Multicast Events on same process', function() {
   });
   it('should emit an encrypted event and receive it', function(done) {
     var emitter4 = new EventEmitter({
+      secure: true,
       secret: 'password'
     });
     function handler(data) {
