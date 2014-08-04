@@ -41,10 +41,22 @@ Add a listener for the specified event
 
 __Parameters__
 * event: (`String`) The event.
-* listener: (`Function`) The function to call when the event occurs.
+* listener: (`Function`) The function to call when the event occurs. __Note__: the last argument used to call the listener is a `rinfo` object whit some information about the sender ( address, family, port, size).
 
 __Returns__
 * `EventEmitter`
+
+##### Example
+
+```js
+var EventEmitter = require('multicast-events').EventEmitter;
+var emitter = new EventEmitter();
+emitter.on('test', function (data, rinfo) {
+  console.log(rinfo);
+  // example of the result into your terminal session
+  // { address: '192.168.2.36', family: 'IPv4', port: 51036, size: 33 } 
+});
+```
 
 ### on( event, listener )
 
