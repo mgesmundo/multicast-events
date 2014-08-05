@@ -2,7 +2,7 @@
   "name": "multicast-events",
   "description": "Emit an event on a machine and listen it on a different machine (or process).",
   "preferGlobal": "false",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "author": {
     "name": "Marcello Gesmundo",
     "email": "mgesmundo@yoovant.com",
