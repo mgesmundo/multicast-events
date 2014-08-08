@@ -2,7 +2,7 @@
   "name": "multicast-events",
   "description": "Emit an event on a machine and listen it on a different machine (or process).",
   "preferGlobal": "false",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "author": {
     "name": "Marcello Gesmundo",
     "email": "mgesmundo@yoovant.com",
@@ -26,7 +26,7 @@
     "test": "mocha test/test.js --require should --reporter spec"
   },
   "dependencies": {
-    "msgpack": "~0.2.3",
+    "amp-message": "~0.1.2",
     "buffertools": "~2.1.2"
   },
   "devDependencies": {
